@@ -1,0 +1,35 @@
+# SCALP-AI · торговый бот 24/7
+# Запускается автоматически каждые 5 минут: анализирует топ-20 Bybit,
+# ведёт виртуальный счёт 30→500 USDT, дописывает bot/history.txt
+# и коммитит bot/state.json + bot/history.txt в репозиторий.
+# Сайт (GitHub Pages) читает bot/state.json и показывает статистику.
+
+name: trading bot 24/7
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'   # каждые 5 минут (GitHub может задерживать запуск на несколько минут — это нормально)
+  workflow_dispatch: {}      # кнопка «Run workflow» для ручного запуска
+
+permissions:
+  contents: write            # боту нужно право коммитить state.json и history.txt
+
+concurrency:
+  group: trading-bot
+  cancel-in-progress: false  # не ронять предыдущий запуск, если он ещё идёт
+
+jobs:
+  trade:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Trade
+        run: node bot/bot.js

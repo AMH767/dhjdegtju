@@ -1,0 +1,41 @@
+{
+ "version": 1,
+ "updatedAt": 1794983306073,
+ "startedAt": 1794983306073,
+ "lastCommitAt": 0,
+ "goal": 500,
+ "start": 30,
+ "acc": {
+  "bal": 30,
+  "peak": 30,
+  "maxDD": 0,
+  "fees": 0,
+  "done": false,
+  "blown": false,
+  "risk": 0.01,
+  "riskBase": 0.01,
+  "streak": 0,
+  "eq": [
+   30
+  ],
+  "tradesN": 0,
+  "winsN": 0
+ },
+ "paper": {
+  "weights": {
+   "ob": 1,
+   "delta": 1,
+   "fvg": 1,
+   "liq": 1,
+   "trend": 1,
+   "news": 1,
+   "vol": 1
+  },
+  "adj": 0,
+  "seq": 0,
+  "lastSig": {},
+  "lessons": []
+ },
+ "open": [],
+ "trades": []
+}
